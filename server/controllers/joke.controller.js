@@ -7,6 +7,9 @@ module.exports.findAllJokes = (req, res) => {
 };
 
 module.exports.findOneSingleJoke = (req, res) => {
+  if(req.params.id === "random"){
+    return this.findRandomJoke(req, res)
+  }
 	Joke.findOne({ _id: req.params.id })
 		.then(oneSingleJoke => res.json({ joke: oneSingleJoke }))
 		.catch(err => res.json({ message: "Something went wrong", error: err }));
@@ -31,5 +34,11 @@ module.exports.deleteAnExistingJoke = (req, res) => {
 };
 
 module.exports.findRandomJoke = (req, res) => {
-  //Do Something Here
+  Joke.find()
+    .then(allDaJokes =>  {
+      let rand = Math.floor(Math.random()*allDaJokes.length)
+      return allDaJokes[rand]
+    })
+    .then(randomJoke => res.json({joke: randomJoke}))
+    .catch(err => res.json({ message: "Something went wrong", error: err }));
 }

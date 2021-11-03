@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 
 const JokeSchema = new mongoose.Schema({
-	name: {
+	setup: {
 		type: String,
-		required: [true, "name is required"],
-		minlength: [6, "First name must be at least 6 characters long"],
+		required: [true, "You can't have a joke without a set-up!"],
+		minlength: [10, "Eh, I'm not sure that setup was long enough. Go for at least 10 characters"],
 	},
-	age: Number
+	punchline: {
+		type: String,
+		required: [true, "You can't have a joke without a punchline"],
+		minlength: [3, "Seems like too short of a punchline. You sure you filled that out correctly?"]
+	}
 }, {timestamps: true});
 
 const Joke = mongoose.model("Joke", JokeSchema);
