@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
+const JokeSchema = new mongoose.Schema({
 	name: {
 		type: String,
 		required: [true, "name is required"],
@@ -9,6 +9,6 @@ const UserSchema = new mongoose.Schema({
 	age: Number
 }, {timestamps: true});
 
-const User = mongoose.model("User", UserSchema);
+const Joke = mongoose.model("Joke", JokeSchema);
 
-module.exports = User;
+module.exports = Joke;

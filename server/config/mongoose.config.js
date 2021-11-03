@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const dbNAME = //Name Your DB Here
+const dbNAME = "jokes_api"
 
 mongoose.connect("mongodb://localhost/"+dbNAME, {
 	useNewUrlParser: true,
